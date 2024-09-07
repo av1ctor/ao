@@ -1,7 +1,7 @@
 /* global Deno */
 
 import { Command, basename, resolve } from '../deps.js'
-import { bundlerArgs, tagsArg } from '../utils.js'
+import { bundlerArgs, tagsArg, localnetArgs } from '../utils.js'
 import { VERSION } from '../versions.js'
 
 function walletArgs (wallet) {
@@ -49,10 +49,11 @@ function contractSourceArgs (contractWasmPath) {
  * - allow using environment variables to set things like path to wallet
  * - require confirmation and bypass with --yes
  */
-export async function publish ({ wallet, bundler, tag, value }, contractWasmPath) {
+export async function publish ({ wallet, bundler, tag, value, localnet }, contractWasmPath) {
   const cmdArgs = [
     ...walletArgs(wallet),
     ...bundlerArgs(bundler),
+    ...localnetArgs(localnet),
     ...contractSourceArgs(contractWasmPath),
     ...tagsArg({ tags: tag, values: value })
   ]
@@ -92,6 +93,11 @@ export const command = new Command()
   .option(
     '-v, --value <value:string>',
     'value of the preceding tag name',
+    { collect: true }
+  )
+  .option(
+    '-l, --localnet',
+    'publish on ao-localnet',
     { collect: true }
   )
   .arguments('<wasmfile:string>')

@@ -1,7 +1,7 @@
 /* global Deno */
 
 import { Command } from '../deps.js'
-import { tagsArg, walletArgs } from '../utils.js'
+import { localnetArgs, tagsArg, walletArgs } from '../utils.js'
 import { VERSION } from '../versions.js'
 
 function moduleArgs (src) {
@@ -23,11 +23,12 @@ function schedulerArgs (src) {
  * - Validate existence of wallet
  * - require confirmation and bypass with --yes
  */
-export async function spawn ({ wallet, tag, value, module, scheduler }) {
+export async function spawn ({ wallet, tag, value, module, scheduler, localnet }) {
   const cmdArgs = [
     ...walletArgs(wallet),
     ...moduleArgs(module),
     ...schedulerArgs(scheduler),
+    ...localnetArgs(localnet),
     ...tagsArg({ tags: tag, values: value })
   ]
 
@@ -71,6 +72,11 @@ export const command = new Command()
   .option(
     '-v, --value <value:string>',
     'value of the preceding tag name',
+    { collect: true }
+  )
+  .option(
+    '-l, --localnet',
+    'spawn on ao-localnet',
     { collect: true }
   )
   .action(spawn)

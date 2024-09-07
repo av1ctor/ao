@@ -41,3 +41,12 @@ export function bundlerArgs (bundler) {
       ]
     : []
 }
+
+export function localnetArgs (localnet) {
+  return localnet
+    ? [
+        '-e',
+        'AO_LOCALNET=1'
+      ]
+    : []
+}

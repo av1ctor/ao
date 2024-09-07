@@ -5,7 +5,9 @@ export const DEFAULT_VARIANT_TAG = { name: 'Variant', value: 'ao.TN.1' }
 export const DEFAULT_MEMORY_LIMIT_TAG = {name: 'Memory-Limit', value: '1-gb' }
 export const DEFAULT_COMPUTE_LIMIT_TAG = {name: 'Compute-Limit', value: '9000000000000' }
 
-export const DEFAULT_BUNDLER_HOST = 'https://up.arweave.net'
+export const DEFAULT_BUNDLER_HOST = process.env.AO_LOCALNET? 
+  'http://host.docker.internal:4007': 
+  'https://up.arweave.net';
 
 export const AoModuleTags = [
   { name: 'Data-Protocol', value: 'ao' },

@@ -38,7 +38,7 @@ export const SUPPORTED_BUNDLERS = {
  */
 
 export const determineBundlerHost = (host) => {
-  if (host.includes('up.arweave.net')) return SUPPORTED_BUNDLERS.UP
+  return SUPPORTED_BUNDLERS.UP
 }
 
 /**

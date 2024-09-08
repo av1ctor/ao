@@ -8,6 +8,15 @@ export const DEFAULT_COMPUTE_LIMIT_TAG = {name: 'Compute-Limit', value: '9000000
 export const DEFAULT_BUNDLER_HOST = process.env.AO_LOCALNET? 
   'http://host.docker.internal:4007': 
   'https://up.arweave.net';
+export const DEFAULT_GATEWAY_URL = process.env.AO_LOCALNET? 
+  'http://host.docker.internal:4000':
+  undefined; 
+export const DEFAULT_MU_URL = process.env.AO_LOCALNET?
+  'http://host.docker.internal:4002':
+  undefined;
+export const DEFAULT_CU_URL = process.env.AO_LOCALNET?
+  'http://host.docker.internal:4004':
+  undefined;
 
 export const AoModuleTags = [
   { name: 'Data-Protocol', value: 'ao' },

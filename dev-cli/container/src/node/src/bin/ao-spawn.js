@@ -1,9 +1,21 @@
 #! /usr/bin/env node
 
 import fs from 'node:fs'
-import { spawn, createDataItemSigner } from '@permaweb/aoconnect'
-
+import { connect, createDataItemSigner } from '@permaweb/aoconnect'
 import { parseTags, spawnProcessWith } from '../main.js'
+import { DEFAULT_GATEWAY_URL, DEFAULT_CU_URL, DEFAULT_MU_URL } from '../defaults.js'
+
+const {spawn} = connect(
+  DEFAULT_GATEWAY_URL?
+    {
+      GATEWAY_URL: DEFAULT_GATEWAY_URL,
+      GRAPHQL_URL: `${DEFAULT_GATEWAY_URL}/graphql`,
+      CU_URL: DEFAULT_CU_URL,
+      MU_URL: DEFAULT_MU_URL,
+    }
+  :
+    undefined
+);
 
 const uploadAoProcess = spawnProcessWith({
   walletExists: async (path) => fs.existsSync(path),

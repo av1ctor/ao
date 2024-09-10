@@ -591,7 +591,6 @@ const Module = (() => {
         assert(runtimeInitialized, `native function \`${name}\` called before runtime initialization`);
         var f = wasmExports[name];
         assert(f, `exported native function \`${name}\` not found`);
-        assert(f.constructor === 'function', `${name} is not a function`);
         return f(...args);
       };
     }

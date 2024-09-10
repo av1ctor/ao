@@ -4734,6 +4734,7 @@ const Module = (() => {
      * @param {Arguments|Array=} args
      * @param {Object=} opts
      */ var ccall = (ident, returnType, argTypes, args, opts) => {
+      console.log({ident, returnType, argTypes, args, opts});
       var toC = {
         "string": str => {
           var ret = 0;

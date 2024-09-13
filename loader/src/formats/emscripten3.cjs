@@ -588,6 +588,7 @@ const Module = (() => {
 
     function createExportWrapper(name) {
       return (...args) => {
+        out(name);
         assert(runtimeInitialized, `native function \`${name}\` called before runtime initialization`);
         var f = wasmExports[name];
         assert(f, `exported native function \`${name}\` not found`);

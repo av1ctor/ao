@@ -266,7 +266,7 @@ const Module = (() => {
       throw new Error("environment detection error");
     }
 
-    var out = console.log.bind(console);
+    var out = Module["print"] || console.log.bind(console);
 
     var err = Module["printErr"] || console.error.bind(console);
 
@@ -588,12 +588,11 @@ const Module = (() => {
 
     function createExportWrapper(name) {
       return (...args) => {
-        out(name);
         assert(runtimeInitialized, `native function \`${name}\` called before runtime initialization`);
-        var f = wasmExports[name];
-        assert(f, `exported native function \`${name}\` not found`);
-        assert(typeof f === 'function', `\`${name}\` is not a function`);
-        return f(...args);
+        var fuck = wasmExports[name];
+        assert(fuck, `exported native function \`${name}\` not found`);
+        assert(typeof fuck === 'function', `\`${name}\` is not a function`);
+        return fuck(...args);
       };
     }
 

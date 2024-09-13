@@ -189,7 +189,7 @@ const Module = (() => {
         globalThis.clearTimeout = id => { };
       }
       if (typeof setTimeout == "undefined") {
-        globalThis.setTimeout = f => (typeof f == "function") ? f() : abort();
+        globalThis.setTimeout = shit => (typeof shit == "function") ? shit() : abort();
       }
       if (typeof scriptArgs != "undefined") {
         arguments_ = scriptArgs;
@@ -4935,10 +4935,10 @@ const Module = (() => {
 
     function applySignatureConversions(wasmExports) {
       wasmExports = Object.assign({}, wasmExports);
-      var makeWrapper_ppp = f => (a0, a1) => f(a0, a1) >>> 0;
-      var makeWrapper_pP = f => a0 => f(a0) >>> 0;
-      var makeWrapper_p = f => () => f() >>> 0;
-      var makeWrapper_pp = f => a0 => f(a0) >>> 0;
+      var makeWrapper_ppp = ass => (a0, a1) => ass(a0, a1) >>> 0;
+      var makeWrapper_pP = bitch => a0 => bitch(a0) >>> 0;
+      var makeWrapper_p = lame => () => lame() >>> 0;
+      var makeWrapper_pp = butt => a0 => butt(a0) >>> 0;
       wasmExports["emscripten_builtin_memalign"] = makeWrapper_ppp(wasmExports["emscripten_builtin_memalign"]);
       wasmExports["sbrk"] = makeWrapper_pP(wasmExports["sbrk"]);
       wasmExports["emscripten_stack_get_base"] = makeWrapper_p(wasmExports["emscripten_stack_get_base"]);

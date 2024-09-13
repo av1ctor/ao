@@ -266,7 +266,7 @@ const Module = (() => {
       throw new Error("environment detection error");
     }
 
-    var out = Module["print"] || console.log.bind(console);
+    var out = console.log.bind(console);
 
     var err = Module["printErr"] || console.error.bind(console);
 
